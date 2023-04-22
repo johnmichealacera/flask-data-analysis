@@ -114,13 +114,13 @@ def stacked_bar_chart_load_url(team_rating):
   # Set the title and labels
   ax.set_title('Team Performance')
   ax.set_xlabel('Team Name')
-  ax.set_ylabel('Number of Games')
+  ax.set_ylabel('Total Score')
 
   # Set the x-tick labels to be the team names
   ax.set_xticklabels(df.index, rotation=90)
 
   # Save the figure to a PNG file
-  plt.savefig('stacked_bar_chart.png')
+  plt.savefig('stacked_bar_chart.png', bbox_inches='tight')
 
   # Return the PNG file as an image
   return send_file('stacked_bar_chart.png', mimetype='image/png')
