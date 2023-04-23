@@ -108,8 +108,11 @@ def stacked_bar_chart_load_url(team_rating):
   # Set the index to 'name' column
   df = display_df.set_index('name')
 
+  # Set the size of the chart
+  fig, ax = plt.subplots(figsize=(20, 10))
+
   # Create the stacked bar chart
-  ax = df[['rating', 'wins', 'losses']].plot(kind='bar', stacked=True, figsize=(10, 6))
+  df[['rating', 'wins', 'losses']].plot(kind='bar', stacked=True, ax=ax)
 
   # Set the title and labels
   ax.set_title('Team Performance')
@@ -118,9 +121,12 @@ def stacked_bar_chart_load_url(team_rating):
 
   # Set the x-tick labels to be the team names
   ax.set_xticklabels(df.index, rotation=90)
+  # Reduce the font size of the x-axis labels
+  ax.tick_params(axis='x', labelsize=8)
 
   # Save the figure to a PNG file
-  plt.savefig('stacked_bar_chart.png', bbox_inches='tight')
+  # plt.savefig('stacked_bar_chart.png', bbox_inches='tight')
+  plt.savefig('stacked_bar_chart.png', pad_inches=0.1)
 
   # Return the PNG file as an image
   return send_file('stacked_bar_chart.png', mimetype='image/png')
