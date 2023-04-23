@@ -1,0 +1,8 @@
+services:
+  - name: flaskdataanalysis
+    image: flaskdataanalysis
+    envVars:
+      - key: DOTA_BACKEND_API
+        value: https://dota2-api-backend.onrender.com
+    httpPort: 5000
+    internalPort: 5000
